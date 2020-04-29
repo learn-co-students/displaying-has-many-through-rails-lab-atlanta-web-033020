@@ -1,0 +1,14 @@
+<h1>Here is the Information For The Patient:</h1>
+<h2>Patient Name: <%= @patient.name %> </h2>
+<h2>Patient Age: <%= @patient.age %></h2>
+<h2>Patient Appointments:</h2>
+<%@appointments.each do |appointment|%>
+    <% array = appointment.appointment_datetime.to_datetime.to_formatted_s(:long).split(' ') %> 
+    <% month = array[0]%>
+    <% day = array[1]%>
+    <% year = array[2]%>
+    <% time = array[3]%>
+    <%= link_to appointment.doctor.name, doctor_path(appointment.doctor)%>
+    <h3>Date and Time: <%="#{month} #{day} #{year} at #{time}"%></h3>
+
+<% end %>
